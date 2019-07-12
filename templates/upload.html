@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 style="text-align: center;">{{ title }}</h1>
+    <hr>
+    {% if message %}
+    <div class="col-lg-12 alert{% if valid %} alert-success{% else %} alert-danger{% endif %}">
+
+        {{ message }}
+
+    </div>
+    {% endif %}
+    <form method=post enctype=multipart/form-data>
+        {% if error %}
+        <div class="row">
+            <div class="col-lg-12">
+                {{ error }}
+            </div>
+        </div>
+        {% endif %}
+        <div class="row form-group">
+            <label for="file" class="col-sm-3 col-form-label">Datei:</label>
+            <div class="col-sm-9">
+                <input style="margin-bottom:10px;" class="form-control-file" id="file" type=file name=file accept=".jpeg,.jpg">
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="demonstrate" class="col-sm-3 col-form-label">
+                Zwischenschritte zeigen?
+            </label>
+            <div class="col-sm-9">
+                <input id="demonstrate" style="margin-bottom:10px;" type=checkbox name="demonstrate" value="demonstrate">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-lg-12">
+                <input class="btn btn-lg btn-success" type=submit value=Upload>
+            </div>
+        </div>
+    </form>
+{% endblock %}

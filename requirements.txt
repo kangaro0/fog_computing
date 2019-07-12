@@ -1,0 +1,8 @@
+flask
+opencv-python
+matplotlib
+imutils
+peakutils
+tensorflow
+keras
+

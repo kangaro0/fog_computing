@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card text-white bg-dark" style="width:17rem">
+                <img class="card-img-top" src="{{ url_for('media', path=folder_id + "/" + picture) }}">
+                <div class="card-body">
+                    <p class="card-text">Original-Bild</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            {% for img in preprocessing %}
+            <div class="card text-white{% if data[img] == true %} bg-success{% else %} bg-danger{% endif %}" style="width:10rem; margin:15px">
+                <img class="card-img-top" src="{{ url_for('media', path=folder_id + "/preprocessing/" + img) }}">
+                <div class="card-body">
+                    <p class="card-text">{% if data[img] == true %}Fehlerfrei{% else %}Ausschuss{% endif %}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row justify-content-center">
+            {% for img in templates %}
+            <div class="card bg-light" style="width:10rem; margin:15px">
+                <img class="card-img-top" src="{{ url_for('media', path=folder_id + "/preprocessing/" + img) }}">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
